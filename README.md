@@ -18,7 +18,8 @@ To provide a visual demonstration of our project, we have created a YouTube vide
 
 <br>
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SGITcHu6Zqw/0.jpg)]([https://www.youtube.com/watch?v=SGITcHu6Zqw](https://youtu.be/SGITcHu6Zqw))
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SGITcHu6Zqw/0.jpg)]([https://www.youtube.com/watch?v=SGITcHu6Zqw))
+
 
 <h2>Getting Started</h2>
 To run the project locally or explore the source code, please refer to the accompanying documentation and instructions provided in the repository.
