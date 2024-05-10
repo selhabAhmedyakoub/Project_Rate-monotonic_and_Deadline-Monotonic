@@ -75,7 +75,7 @@ class MainWindow(qtw.QWidget):
             self.new_window1.setFixedSize(1000, 700)  # Set the fixed size of the new window
             self.new_window1.setLayout(qtw.QVBoxLayout())
 
-            my_label1 = qtw.QLabel("Fill in the data ?")
+            my_label1 = qtw.QLabel("Fill in the data ")
             my_label1.setFont(qtg.QFont('Red Hat display', 40))
             self.new_window1.layout().addWidget(my_label1, alignment=QtCore.Qt.AlignCenter)
              
