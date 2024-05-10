@@ -16,7 +16,7 @@ In this project, we have developed an interactive interface to demonstrate the f
 <h2>YouTube Video</h2>
 To provide a visual demonstration of our project, we have created a YouTube video that showcases the interface and its functionalities. The video illustrates how the interface can be used to simulate the scheduling process, visualize task execution, and analyze the resulting schedule.
 
-You can access the YouTube video by following this link: YouTube Video Link
+You can access the YouTube video by following this link: [YouTube Video Link](https://youtu.be/SGITcHu6Zqw)
 
 <h2>Getting Started</h2>
 To run the project locally or explore the source code, please refer to the accompanying documentation and instructions provided in the repository.
