@@ -4,12 +4,32 @@ from math import lcm,gcd
 from function import Draw, Priority_rm, Priority_dm
 import PyQt5.QtGui as qtg
 from PyQt5.QtWidgets import QLabel, QVBoxLayout, QWidget
+import sys
+from PyQt5.QtWidgets import QApplication, QStyleFactory, QWidget, QVBoxLayout, QPushButton
+
+def set_dark_theme(app):
+    app.setStyle(QStyleFactory.create("Fusion"))
+    palette = app.palette()
+    palette.setColor(app.palette().Window, QtGui.QColor(53, 53, 53))
+    palette.setColor(app.palette().WindowText, QtGui.QColor(255, 255, 255))
+    palette.setColor(app.palette().Base, QtGui.QColor(25, 25, 25))
+    palette.setColor(app.palette().AlternateBase, QtGui.QColor(53, 53, 53))
+    palette.setColor(app.palette().ToolTipBase, QtGui.QColor(255, 255, 255))
+    palette.setColor(app.palette().ToolTipText, QtGui.QColor(255, 255, 255))
+    palette.setColor(app.palette().Text, QtGui.QColor(255, 255, 255))
+    palette.setColor(app.palette().Button, QtGui.QColor(53, 53, 53))
+    palette.setColor(app.palette().ButtonText, QtGui.QColor(255, 255, 255))
+    palette.setColor(app.palette().BrightText, QtGui.QColor(255, 0, 0))
+    palette.setColor(app.palette().Highlight, QtGui.QColor(142, 45, 197))
+    palette.setColor(app.palette().HighlightedText, QtGui.QColor(255, 255, 255))
+    app.setPalette(palette)
 
 class MainWindow(qtw.QWidget):
     #tasks الصفحة الرئيسية الخاصة بوضع عدد ال  
     def __init__(self):
         super().__init__()
         self.setWindowTitle("TP_rm_dm")
+        self.setWindowIcon(qtg.QIcon("Reel.ico"))
         self.setFixedSize(1000, 700)
 
         main_layout = qtw.QVBoxLayout()
@@ -35,15 +55,15 @@ class MainWindow(qtw.QWidget):
         labels_layout = qtw.QVBoxLayout(labels_groupbox)
 
         my_label2 = qtw.QLabel("note")
-        my_label2.setFont(QtGui.QFont('Red Hat Display', 20))
+        my_label2.setFont(QtGui.QFont('Red Hat Display', 18))
         labels_layout.addWidget(my_label2, alignment=QtCore.Qt.AlignCenter)
 
-        my_label3 = qtw.QLabel("Please select a number of tasks greater than two, and kindly note that if you choose a number exceeding three tasks, you will only be able to view the time ranges and not the diagram.")
+        my_label3 = qtw.QLabel("Please select a number of tasks greater than two, and kindly note that if you choose a number exceeding three tasks,\n\t\t you will only be able to view the time ranges and not the diagram.")
         my_label3.setFont(QtGui.QFont('Red Hat Display', 10))
         labels_layout.addWidget(my_label3, alignment=QtCore.Qt.AlignCenter)
-        my_label4 = qtw.QLabel(" the time ranges and not the diagram.")
-        my_label4.setFont(QtGui.QFont('Red Hat Display', 10))
-        labels_layout.addWidget(my_label4, alignment=QtCore.Qt.AlignCenter)
+        #my_label4 = qtw.QLabel(" the time ranges and not the diagram.")
+        #my_label4.setFont(QtGui.QFont('Red Hat Display', 10))
+        #labels_layout.addWidget(my_label4, alignment=QtCore.Qt.AlignCenter)
 
         main_layout.addWidget(labels_groupbox, alignment=QtCore.Qt.AlignCenter)
 
@@ -72,6 +92,7 @@ class MainWindow(qtw.QWidget):
         else:
             self.new_window1 = qtw.QWidget()
             self.new_window1.setWindowTitle("TP_rm_dm")
+            self.new_window1.setWindowIcon(qtg.QIcon("Reel.ico"))
             self.new_window1.setFixedSize(1000, 700)  # Set the fixed size of the new window
             self.new_window1.setLayout(qtw.QVBoxLayout())
 
@@ -144,6 +165,7 @@ class MainWindow(qtw.QWidget):
 
         self.new_window2 = qtw.QWidget()
         self.new_window2.setWindowTitle("TP_rm_dm")
+        self.new_window2.setWindowIcon(qtg.QIcon("Reel.ico"))
         self.new_window2.setFixedSize(1000, 700)  # Set the fixed size of the new window
         self.new_window2.setLayout(qtw.QVBoxLayout())
         
@@ -268,6 +290,7 @@ class MainWindow(qtw.QWidget):
             # Create a new window to display the drawing
             self.new_window3 = qtw.QWidget()
             self.new_window3.setWindowTitle("Drawing Window")
+            self.new_window3.setWindowIcon(qtg.QIcon("Reel.ico"))
             self.new_window3.setFixedSize(1000, 700)  # Set the fixed size of the new window
             self.new_window3.setLayout(qtw.QVBoxLayout())
 
@@ -322,11 +345,11 @@ class MainWindow(qtw.QWidget):
         for T in Tache:
             Period.append(T['Period'])
             c.append(T['C'])
-
+        
         Period_etude = lcm(*Period)
         GCD = gcd(*c)
-        Tache = Priority_rm(Tache)
-
+        Tache = Priority_dm(Tache)
+        
         for T in Tache:
             for i in range(T['A'], Period_etude, T['Period']):
                 start = i
@@ -352,6 +375,7 @@ class MainWindow(qtw.QWidget):
                         # Create a new window to display the error message
                         self.new_window4 = qtw.QWidget()
                         self.new_window4.setWindowTitle("Error")
+                        
                         self.new_window4.setLayout(qtw.QVBoxLayout())
 
                         # Create a label to display the error message
@@ -376,6 +400,7 @@ class MainWindow(qtw.QWidget):
             # Create a new window to display the drawing
             self.new_window4 = qtw.QWidget()
             self.new_window4.setWindowTitle("Drawing Window")
+            self.new_window4.setWindowIcon(qtg.QIcon("Reel.ico"))
             self.new_window4.setFixedSize(1000, 700)  # Set the fixed size of the new window
             self.new_window4.setLayout(qtw.QVBoxLayout())
 
@@ -401,5 +426,6 @@ class MainWindow(qtw.QWidget):
 
             self.new_window4.show()
 app = qtw.QApplication([])
+set_dark_theme(app)
 mw = MainWindow()
 app.exec_()

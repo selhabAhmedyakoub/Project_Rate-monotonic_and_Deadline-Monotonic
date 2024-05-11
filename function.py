@@ -4,18 +4,20 @@ from PIL import Image
 from PyQt5.QtGui import QImage, QPixmap
 
 def Priority_rm(Tache):
-    for i in range(len(Tache) - 1):
-        if Tache[i]['Period'] > Tache[i + 1]['Period']:
-            temp = Tache[i]
-            Tache[i] = Tache[i + 1]
-            Tache[i + 1] = temp
+    for j in range(len(Tache) - 1):
+        for i in range(len(Tache) - 1):
+            if Tache[i]['Period'] > Tache[i + 1]['Period']:
+                temp = Tache[i]
+                Tache[i] = Tache[i + 1]
+                Tache[i + 1] = temp
     return  Tache
 def Priority_dm(Tache):
-    for i in range(len(Tache) - 1):
-        if Tache[i]['Dead line'] > Tache[i + 1]['Dead line']:
-            temp = Tache[i]
-            Tache[i] = Tache[i + 1]
-            Tache[i + 1] = temp
+    for j in range(len(Tache) - 1):
+        for i in range(len(Tache) - 1):
+            if Tache[i]['Dead line'] > Tache[i + 1]['Dead line']:
+                temp = Tache[i]
+                Tache[i] = Tache[i + 1]
+                Tache[i + 1] = temp
     return  Tache
 
 def Draw(Tache, XY, LCM, GCD, length, title):
